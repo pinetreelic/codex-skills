@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Wrap"
+  short_description: "Adaptive closeout with deep multi-agent audit"
+  default_prompt: "Use $session-wrap to close this session with the appropriate quick, handoff, or multi-agent audit mode."
