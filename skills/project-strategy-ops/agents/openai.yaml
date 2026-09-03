@@ -1,0 +1,4 @@
+interface:
+  display_name: "프로젝트 전략실 운영"
+  short_description: "지정된 전략실의 대화를 유지하며 실행실을 자동 관리"
+  default_prompt: "Use $project-strategy-ops only in this explicitly designated 프로젝트·성장 전략실 and automatically coordinate its 실행실."

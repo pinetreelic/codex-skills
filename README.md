@@ -4,6 +4,15 @@ Reusable skills for OpenAI Codex, maintained by [pinetreelic](https://github.com
 
 ## Available skills
 
+### project-strategy-ops
+
+Keep an explicitly designated project strategy room available for decisions and conversation while automatically coordinating bounded execution rooms.
+
+- reuses execution rooms only when purpose, authority, and source scope match
+- keeps external actions within the user's existing authorization
+- isolates Git work in named branches and worktrees
+- returns only completed results, real blockers, and decisions to the strategy room
+
 ### session-wrap
 
 Close a coding or work session with evidence-backed status, explicit ownership, reconciled follow-ups, and one decisive next step.
@@ -16,19 +25,20 @@ The audit workflow adapts the multi-agent session-wrap design from [Team Attenti
 
 ## Install
 
-Install the `session-wrap` skill with the Skills CLI:
+Install either skill with the Skills CLI:
 
 ```bash
+npx skills add pinetreelic/codex-skills --skill project-strategy-ops --agent codex --global --yes
 npx skills add pinetreelic/codex-skills --skill session-wrap --agent codex --global --yes
 ```
 
-Or clone the repository and copy `skills/session-wrap` into `${CODEX_HOME:-$HOME/.codex}/skills/session-wrap`.
+Or clone the repository and copy the selected folder under `skills/` into `${CODEX_HOME:-$HOME/.codex}/skills/`.
 
 Restart Codex or reload skills if the new skill is not discovered immediately.
 
 ## Use
 
-Invoke `$session-wrap`, or ask Codex to wrap up, create a handoff, or perform an evidence-backed audit. The skill selects the lightest mode that fits the request and risk.
+Invoke `$project-strategy-ops` in a strategy room that you explicitly designate, or invoke `$session-wrap` to wrap up, create a handoff, or perform an evidence-backed audit.
 
 ## Validate
 
@@ -36,6 +46,7 @@ From the repository root:
 
 ```bash
 bash skills/session-wrap/scripts/test_run_wrap.sh
+python3 /path/to/skill-creator/scripts/quick_validate.py skills/project-strategy-ops
 python3 /path/to/skill-creator/scripts/quick_validate.py skills/session-wrap
 ```
 
