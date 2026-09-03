@@ -30,9 +30,19 @@ A user's request to operate a strategy room is standing authority to inspect, re
 
 Before creating an execution room, inspect existing tasks for a related room in the same project. Reuse one only when the new work genuinely continues the same kind of work with the same purpose, authority, and source scope. Create a new room when any of those differ.
 
-Name rooms `[프로젝트약칭실행] 작업명` by default. Use `[공통실행] 작업명` for genuinely shared work. Pin active rooms when possible. In a reorderable pinned list, use drag ordering to keep each strategy room immediately followed by its active execution rooms; do not interleave another project's rooms. Place each newly pinned execution room inside its project's existing block.
+Name rooms `[프로젝트약칭실행] 작업명` by default. Use `[공통실행] 작업명` for genuinely shared work.
 
-After creating, pinning, reordering, or ending a room, re-read current task or sidebar state to confirm the change. After dispatch, do not wait at length, duplicate the work, or continue executing it in the strategy room; return immediately to a conversation-ready state.
+Whenever creating an execution room or reusing one by making it active, complete this UI sequence before dispatch:
+
+1. Create the room, or select the related existing room for reuse.
+2. Pin that execution room.
+3. Move it in the pinned list into the originating strategy room's block.
+
+The strategy room must be immediately followed by all of its active execution rooms as one contiguous block. When that block already contains active rooms, place the newly activated room after them unless the user specifies another order. Never interleave a different project's strategy or execution room. If pinning or reordering is unavailable, report that as an organization blocker instead of silently skipping the step.
+
+After creating or selecting, pinning, and moving the room, re-read the task and sidebar state rather than relying only on mutation responses. Confirm that the intended room is active, pinned, inside the correct strategy block, and separated from every other project block. Example: activating `A실행2` changes `[A전략, A실행1, B전략, B실행1]` to `[A전략, A실행1, A실행2, B전략, B실행1]`, not `[A전략, A실행1, B전략, A실행2, B실행1]`.
+
+After dispatch, do not wait at length, duplicate the work, or continue executing it in the strategy room; return immediately to a conversation-ready state.
 
 ## Dispatch with an execution contract
 
@@ -68,7 +78,7 @@ Use only these execution states:
 - `검토 대기`: completed output awaits strategy-room or user review
 - `종료`: confirmed complete with no remaining work
 
-An execution room reports to its originating strategy room only when it completes, is actually blocked, or needs a user decision. Ordinary progress and unchanged checks must not interrupt the strategy conversation. On `결정 대기`, the strategy room obtains the decision and resumes the same room only when purpose, authority, and source scope remain unchanged. On `검토 대기`, review the result and either resume it with a bounded follow-up or mark it `종료`. After user confirmation, suggest unpinning or archiving; do not assume confirmation.
+An execution room reports to its originating strategy room only when it completes, is actually blocked, or needs a user decision. Ordinary progress and unchanged checks must not interrupt the strategy conversation. On `결정 대기`, the strategy room obtains the decision and resumes the same room only when purpose, authority, and source scope remain unchanged; when resumed, verify that it remains pinned in the correct contiguous block. On `검토 대기`, review the result and either resume it with a bounded follow-up or mark it `종료`. After user confirmation, suggest unpinning or archiving; do not assume confirmation. When an ended room is unpinned or archived, re-read the sidebar and confirm that the strategy room's remaining active execution rooms still form one contiguous block.
 
 Use `결과 / 검증 / 다음 결정` as the default report shape, omitting sections that add no value. Automated checks report only meaningful changes and do not repeat resolved items.
 
