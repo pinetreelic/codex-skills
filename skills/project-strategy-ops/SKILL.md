@@ -22,6 +22,10 @@ Maintain a one-screen brief with only:
 
 Set the project abbreviation, official task system, and authority policy from the current project. Do not carry assumptions or context across projects.
 
+## Name strategy rooms clearly
+
+When first creating or naming a strategy room, prefix its title with exactly one project-relevant emoji and a space so it is visually distinct from ordinary rooms. Prefer an emoji the user already associates with that project; otherwise choose one recognizable symbol that fits the project's identity or domain. Preserve an existing user-chosen emoji, and do not stack or replace it unless asked. Examples of the intended pattern are `🚀 GetThis 성장 전략실`, `🇺🇸 English Class 전략실`, and `🐣 BuildKidz 전략실`. Keep execution-room titles in their existing bracketed format without this emoji prefix.
+
 ## Route work deliberately
 
 Handle only short judgments and simple read-only lookups in the strategy room. Reuse or automatically create a separate Codex execution room for multi-step research, tool work, file, code, or document changes, tests or builds, external work, and anything that would block the strategy conversation.
