@@ -57,8 +57,19 @@ Give an execution room only the context it needs. Include:
 - inputs and their latest-known or last-verified state
 - allowed and prohibited scope
 - conditions that require stopping
+- selected model, reasoning effort, and a short routing reason
 
 Never mix in another project's context.
+
+## Route execution-room models
+
+The user's approval of this policy is standing authorization to specify a model and reasoning effort when creating future execution rooms. A model or effort explicitly requested for a specific room always wins. Otherwise:
+
+- For ordinary execution work, omit `model` and `thinking` so the configured Codex default applies.
+- For demanding multistep research or synthesis across papers, PDFs, code, apps, or other sources, use `gpt-6-astra` with `medium` reasoning.
+- For the hardest cross-system work or material-risk work involving architecture, integrations, authentication, payments, secrets, RLS, destructive data changes, migrations, production releases, or security, use `gpt-6-astra` with `high` reasoning.
+
+Do not choose `xhigh`, `max`, or `ultra` by default. If Astra is unavailable on the target host, use the strongest suitable available model and record the fallback. Do not recreate or restart an already-running room solely to change its model; apply this routing to newly created rooms.
 
 For coding work in a Git repository, create or verify a separate worktree and named `codex/...` branch before the first edit; do not begin editing on a detached HEAD. Keep one purpose per execution room, branch, and worktree. Split any additional request whose purpose, authority, or source scope differs into a separate room, branch, and worktree. Include the branch, worktree, base commit, and scoped change in its contract and concise handoff or report.
 
