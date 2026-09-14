@@ -48,6 +48,14 @@ After creating or selecting, pinning, and moving the room, re-read the task and 
 
 After dispatch, do not wait at length, duplicate the work, or continue executing it in the strategy room; return immediately to a conversation-ready state.
 
+## Track dispatched work in an optional task system
+
+Before dispatch, check for `~/.codex/project-strategy-ops/task-sync.md`. When it exists, read it as user-local operating policy rather than project context. Do nothing when the policy is absent or disabled. Apply only the provider, strategy-room scope, authority, triggers, and failure behavior that the policy states.
+
+Sync only after a real execution thread ID exists and the initial or resumed instruction was delivered successfully. Merely opening, selecting, or reading an execution room does not count. Keep a temporary client-thread-only room at `준비 중` without a task. Treat the sync as short dispatch bookkeeping in the strategy room; do not create another execution room for it. A task-system failure must not block the dispatched work unless the local policy explicitly requires that, and never report a task as created without authoritative readback.
+
+When the policy selects GetThis, read [references/getthis-task-sync.md](references/getthis-task-sync.md) and use the `getthis-tasks` skill. Do not duplicate its credential or API procedures here.
+
 ## Dispatch with an execution contract
 
 Give an execution room only the context it needs. Include:

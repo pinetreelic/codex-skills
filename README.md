@@ -11,6 +11,7 @@ Keep an explicitly designated project strategy room available for decisions and 
 - reuses execution rooms only when purpose, authority, and source scope match
 - keeps external actions within the user's existing authorization
 - isolates Git work in named branches and worktrees
+- optionally records successfully dispatched execution work in GetThis under an explicit user-local create policy
 - returns only completed results, real blockers, and decisions to the strategy room
 
 ### session-wrap
@@ -39,6 +40,8 @@ Restart Codex or reload skills if the new skill is not discovered immediately.
 ## Use
 
 Invoke `$project-strategy-ops` in a strategy room that you explicitly designate, or invoke `$session-wrap` to wrap up, create a handoff, or perform an evidence-backed audit.
+
+Optional task sync is disabled by default. Enable it with a user-local `~/.codex/project-strategy-ops/task-sync.md` that explicitly names the provider, scope, allowed mutations, trigger, timezone, and failure behavior. The policy is local and must not be committed to this repository.
 
 ## Validate
 
