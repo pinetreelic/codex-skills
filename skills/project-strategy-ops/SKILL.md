@@ -46,7 +46,7 @@ The strategy room must be immediately followed by all of its active execution ro
 
 After creating or selecting, pinning, and moving the room, re-read the task and sidebar state rather than relying only on mutation responses. Confirm that the intended room is active, pinned, inside the correct strategy block, and separated from every other project block. Example: activating `A실행2` changes `[A전략, A실행1, B전략, B실행1]` to `[A전략, A실행1, A실행2, B전략, B실행1]`, not `[A전략, A실행1, B전략, A실행2, B실행1]`.
 
-After dispatch, do not wait at length, duplicate the work, or continue executing it in the strategy room; return immediately to a conversation-ready state.
+After dispatch and any configured task-system bookkeeping, do not wait at length, duplicate the work, or continue executing it in the strategy room; return immediately to a conversation-ready state.
 
 ## Track dispatched work in an optional task system
 
